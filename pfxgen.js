@@ -7,6 +7,7 @@ var drawFunction
   , initFunction
   , updateFunction
   ;
+var uiFocus = false;
 var particles = [];
 function Particle () {
   this.x = 0;
@@ -113,6 +114,9 @@ function restart () {
 }
 
 function keyHandler (ev) {
+  if (uiFocus)
+    return;
+
   switch (ev.which) {
     case 112:
       togglePlay();
@@ -124,6 +128,8 @@ function keyHandler (ev) {
       stop();
     break;
   }
+
+  return false;
 }
 
 $(function () {
@@ -136,5 +142,7 @@ $(function () {
   $("#stop").click(stop);
   $("#restart").click(restart);
   $(document).keypress(keyHandler);
+  $("#ui").focusin(function () { uiFocus = true; });
+  $("#ui").focusout(function () { uiFocus = false; });
 
 });
