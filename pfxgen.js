@@ -86,9 +86,9 @@ function togglePlay () {
 }
 
 function start () {
-  initFunction = eval("function () { " + $("#init-function").val() + " }");
-  drawFunction = eval("function () { " + $("#draw-function").val() + " }");
-  updateFunction = eval("function () { " + $("#update-function").val() + " }");
+  initFunction = eval("(function () { " + $("#init-function").val() + " })");
+  drawFunction = eval("(function () { " + $("#draw-function").val() + " })");
+  updateFunction = eval("(function () { " + $("#update-function").val() + " })");
 
   var p;
   for (var i = 0; i < 20; i++) {
