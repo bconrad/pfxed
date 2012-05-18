@@ -10,9 +10,13 @@ var drawFunction
   , updateTimeout
   ;
 var uiFocus = false;
+var startingParticles = 0;
 var maxParticles = 20;
+var emitFrequency = 10;
 var particles = [];
 var dampening = 1;
+var lastRun = undefined;
+var lastEmit = undefined;
 
 var requestAnim =
   window.requestAnimationFrame       ||
@@ -72,6 +76,9 @@ function clear () {
 }
 
 function run () {
+  var now = new Date().getTime();
+  lastRun = lastRun || now;
+  lastEmit = lastEmit || now;
   if (state <= PAUSED)
     return;
 
@@ -85,7 +92,16 @@ function run () {
     particles[p].updatePhysics();
   }
 
+  // emit one particle per emission interval since the last emission time
+  var count = Math.floor((now - lastEmit) / (1000/emitFrequency));
+  for (var i = 1; i <= count; i++) {
+    if (particles.length <= maxParticles)
+      new Particle().add();
+  }
+  lastEmit += count * (1000/emitFrequency);
+
   updateTimeout = requestAnim(run);
+  lastRun = now;
 }
 
 /**
@@ -93,6 +109,7 @@ function run () {
  **/
 
 function togglePlay () {
+  lastRun = lastEmit = new Date().getTime();
   if (state == STOPPED) {
     start();
     run();
@@ -112,13 +129,15 @@ function start () {
   updateFunction = eval("(function () { " + $("#update-function").val() + " })");
 
   maxParticles = parseInt($("#maxParticles").val());
+  emitFrequency = parseInt($("#emitFrequency").val());
 
   var p;
-  for (var i = 0; i < maxParticles; i++) {
+  for (var i = 0; i < startingParticles; i++) {
     p = new Particle();
     p.add();
   }
   state = PLAYING;
+  lastRun = lastEmit = new Date().getTime();
 }
 
 function stop () {
