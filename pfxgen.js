@@ -3,6 +3,7 @@ var STOPPED = -1,
     PLAYING = 1;
 var state = STOPPED;
 var canvas, ctx, width, height;
+var mouseX, mouseY;
 var drawFunction
   , initFunction
   , updateFunction
@@ -153,20 +154,25 @@ function keyHandler (ev) {
   return false;
 }
 
+function mouseMoveHandler (ev) {
+  mouseX = ev.offsetX - canvas.offsetLeft;
+  mouseY = ev.offsetY - canvas.offsetTop;
+}
+
 $(function () {
   width = parseInt($("body").css("width")) - parseInt($("#ui").css("width")) - 20;
   width = Math.min(width, 600);
   $("body").append("<canvas width=\"" + width + "\" height=\"" + "600" + "\"></canvas>");
   canvas = $("canvas").get()[0];
+  height = 600;
 
   ctx = canvas.getContext('2d');
-  width = canvas.clientWidth;
-  height = canvas.clientHeight;
 
   $("#play-pause").click(togglePlay);
   $("#stop").click(stop);
   $("#restart").click(restart);
   $(document).keypress(keyHandler);
+  $(document).mousemove(mouseMoveHandler);
   $("#ui").focusin(function () { uiFocus = true; });
   $("#ui").focusout(function () { uiFocus = false; });
 
