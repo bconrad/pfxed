@@ -1,7 +1,7 @@
 var STOPPED = -1,
     PAUSED = 0,
     PLAYING = 1;
-var running = STOPPED;
+var state = STOPPED;
 var canvas, ctx, width, height;
 var drawFunction
   , initFunction
@@ -50,7 +50,7 @@ function clear () {
 }
 
 function run () {
-  if (running <= PAUSED)
+  if (state <= PAUSED)
     return;
 
   clear();
@@ -71,14 +71,14 @@ function run () {
  **/
 
 function togglePlay () {
-  if (running == STOPPED) {
+  if (state == STOPPED) {
     start();
     run();
-  } else if (running == PAUSED) {
-    running = PLAYING;
+  } else if (state == PAUSED) {
+    state = PLAYING;
     run();
   } else {
-    running = PAUSED;
+    state = PAUSED;
   }
 
   return false;
@@ -95,11 +95,11 @@ function start () {
     p.add();
     initFunction.call(p);
   }
-  running = PLAYING
+  state = PLAYING
 }
 
 function stop () {
-  running = STOPPED;
+  state = STOPPED;
   clear();
 
   particles = [];
