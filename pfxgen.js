@@ -10,7 +10,7 @@ var drawFunction
   , updateTimeout
   ;
 var uiFocus = false;
-var numParticles = 20;
+var maxParticles = 20;
 var particles = [];
 var dampening = 1;
 
@@ -109,10 +109,10 @@ function start () {
   drawFunction = eval("(function () { " + $("#draw-function").val() + " })");
   updateFunction = eval("(function () { " + $("#update-function").val() + " })");
 
-  numParticles = parseInt($("#numParticles").val());
+  maxParticles = parseInt($("#maxParticles").val());
 
   var p;
-  for (var i = 0; i < numParticles; i++) {
+  for (var i = 0; i < maxParticles; i++) {
     p = new Particle();
     p.add();
     initFunction.call(p);
