@@ -128,6 +128,9 @@ function keyHandler (ev) {
     case 115:
       stop();
     break;
+
+    default:
+      return true;
   }
 
   return false;
