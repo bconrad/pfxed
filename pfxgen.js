@@ -11,6 +11,7 @@ var drawFunction
   ;
 var uiFocus = false;
 var particles = [];
+var dampening = .8;
 
 var requestAnim =
   window.requestAnimationFrame       ||
@@ -55,10 +56,10 @@ Particle.prototype.updatePhysics = function () {
   this.y += this.yvel;
 
   if (this.x < 0 || this.x > width)
-    this.xvel *= -1;
+    this.xvel *= -dampening;
 
   if (this.y < 0 || this.y > height)
-    this.yvel *= -1;
+    this.yvel *= -dampening;
 
   updateFunction.call(this);
 }
