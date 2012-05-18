@@ -155,6 +155,7 @@ function keyHandler (ev) {
 
 $(function () {
   width = parseInt($("body").css("width")) - parseInt($("#ui").css("width")) - 20;
+  width = Math.min(width, 600);
   $("body").append("<canvas width=\"" + width + "\" height=\"" + "600" + "\"></canvas>");
   canvas = $("canvas").get()[0];
 
