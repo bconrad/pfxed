@@ -109,6 +109,8 @@ function start () {
   drawFunction = eval("(function () { " + $("#draw-function").val() + " })");
   updateFunction = eval("(function () { " + $("#update-function").val() + " })");
 
+  numParticles = parseInt($("#numParticles").val());
+
   var p;
   for (var i = 0; i < numParticles; i++) {
     p = new Particle();
@@ -177,5 +179,6 @@ $(function () {
   $(document).mousemove(mouseMoveHandler);
   $("#ui").focusin(function () { uiFocus = true; });
   $("#ui").focusout(function () { uiFocus = false; });
+  $("#options").submit(function () { restart(); return false; });
 
 });

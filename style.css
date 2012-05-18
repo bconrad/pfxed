@@ -3,12 +3,11 @@ body {
 
 canvas {
   float: left;
-  background: #888;
+  background: #CCC;
 }
 
 #ui {
   float: right;
-  color: white;
   margin: 0;
   padding: 0;
 }
@@ -21,6 +20,5 @@ canvas {
 }
 
 #play-control a {
-  color: white;
-  background: #444;
+  color: black;
 }
