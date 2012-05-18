@@ -29,6 +29,7 @@ function Particle () {
   this.r = 0;
   this.g = 0;
   this.b = 0;
+  this.a = 1;
   this.index = null;
 }
 
@@ -42,6 +43,7 @@ Particle.prototype.drop = function () {
 }
 
 Particle.prototype.draw = function () {
+  ctx.fillStyle = "rgba(" + this.r + "," + this.g + "," + this.b + "," + this.a + ")";
   drawFunction.call(this);
 }
 
