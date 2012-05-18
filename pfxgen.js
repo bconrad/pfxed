@@ -68,6 +68,7 @@ function run () {
 function togglePlay () {
   if (running == STOPPED) {
     start();
+    run();
   } else if (running == PAUSED) {
     running = PLAYING;
     run();
@@ -83,7 +84,6 @@ function start () {
     new Particle().add();
   }
   running = PLAYING
-  run();
 }
 
 function stop () {
