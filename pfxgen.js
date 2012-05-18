@@ -3,12 +3,16 @@ var STOPPED = -1,
     PLAYING = 1;
 var running = STOPPED;
 var canvas, ctx, width, height;
+var drawFunction
+  , initFunction
+  , updateFunction
+  ;
 var particles = [];
 function Particle () {
-  this.x = Math.random() * width;
-  this.y = Math.random() * height;
-  this.xvel = (Math.random() - .5) * 10;
-  this.yvel = (Math.random() - .5) * 10;
+  this.x = 0;
+  this.y = 0;
+  this.xvel = 0;
+  this.yvel = 0;
   this.r = 0;
   this.g = 0;
   this.b = 0;
@@ -25,7 +29,7 @@ Particle.prototype.drop = function () {
 }
 
 Particle.prototype.draw = function () {
-  ctx.fillRect(this.x, this.y, 4, 4);
+  drawFunction.call(this);
 }
 
 Particle.prototype.updatePhysics = function () {
@@ -38,6 +42,8 @@ Particle.prototype.updatePhysics = function () {
 
   if (this.y < 0 || this.y > height)
     this.yvel *= -1;
+
+  updateFunction.call(this);
 }
 
 function clear () {
@@ -80,8 +86,15 @@ function togglePlay () {
 }
 
 function start () {
+  initFunction = eval("function () { " + $("#init-function").val() + " }");
+  drawFunction = eval("function () { " + $("#draw-function").val() + " }");
+  updateFunction = eval("function () { " + $("#update-function").val() + " }");
+
+  var p;
   for (var i = 0; i < 20; i++) {
-    new Particle().add();
+    p = new Particle();
+    p.add();
+    initFunction.call(p);
   }
   running = PLAYING
 }
