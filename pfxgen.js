@@ -112,6 +112,20 @@ function restart () {
   return false;
 }
 
+function keyHandler (ev) {
+  switch (ev.which) {
+    case 112:
+      togglePlay();
+    break;
+    case 114:
+      restart();
+    break;
+    case 115:
+      stop();
+    break;
+  }
+}
+
 $(function () {
   canvas = $("canvas").get()[0];
   ctx = canvas.getContext('2d');
@@ -121,4 +135,6 @@ $(function () {
   $("#play-pause").click(togglePlay);
   $("#stop").click(stop);
   $("#restart").click(restart);
+  $(document).keypress(keyHandler);
+
 });
