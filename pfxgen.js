@@ -36,7 +36,6 @@ Particle.prototype.updatePhysics = function () {
   this.x += this.xvel;
   this.y += this.yvel;
 
-  var xbound = this.width - this.x;
   if (this.x < 0 || this.x > width)
     this.xvel *= -1;
 
