@@ -10,6 +10,7 @@ var drawFunction
   , updateTimeout
   ;
 var uiFocus = false;
+var numParticles = 20;
 var particles = [];
 var dampening = 1;
 
@@ -109,7 +110,7 @@ function start () {
   updateFunction = eval("(function () { " + $("#update-function").val() + " })");
 
   var p;
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < numParticles; i++) {
     p = new Particle();
     p.add();
     initFunction.call(p);
