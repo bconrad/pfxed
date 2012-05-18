@@ -34,6 +34,8 @@ function Particle () {
   this.b = 0;
   this.a = 1;
   this.index = null;
+
+  initFunction.call(this);
 }
 
 Particle.prototype.add = function () {
@@ -115,7 +117,6 @@ function start () {
   for (var i = 0; i < maxParticles; i++) {
     p = new Particle();
     p.add();
-    initFunction.call(p);
   }
   state = PLAYING;
 }
