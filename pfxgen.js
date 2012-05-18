@@ -110,6 +110,7 @@ function stop () {
 function restart () {
   stop();
   start();
+  run();
   return false;
 }
 
