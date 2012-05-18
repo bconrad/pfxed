@@ -139,6 +139,7 @@ function keyHandler (ev) {
 }
 
 $(function () {
+  $("body").append("<canvas></canvas>");
   canvas = $("canvas").get()[0];
   ctx = canvas.getContext('2d');
   width = canvas.clientWidth;
