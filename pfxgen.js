@@ -11,7 +11,7 @@ var drawFunction
   ;
 var uiFocus = false;
 var particles = [];
-var dampening = .8;
+var dampening = 1;
 
 var requestAnim =
   window.requestAnimationFrame       ||
