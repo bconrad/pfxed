@@ -6,6 +6,7 @@ var canvas, ctx, width, height;
 var drawFunction
   , initFunction
   , updateFunction
+  , updateTimeout
   ;
 var uiFocus = false;
 var particles = [];
@@ -64,7 +65,7 @@ function run () {
     particles[p].updatePhysics();
   }
 
-  setTimeout(run, 1000/60);
+  updateTimeout = setTimeout(run, 1000/60);
 }
 
 /**
@@ -102,6 +103,7 @@ function start () {
 function stop () {
   state = STOPPED;
   clear();
+  clearTimeout(updateTimeout);
 
   particles = [];
   return false;
