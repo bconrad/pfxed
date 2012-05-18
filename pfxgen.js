@@ -1,4 +1,7 @@
-var running = false;
+var STOPPED = -1,
+    PAUSED = 0,
+    PLAYING = 1;
+var running = STOPPED;
 var canvas, ctx, width, height;
 var particles = [];
 function Particle () {
@@ -42,7 +45,7 @@ function clear () {
 }
 
 function run () {
-  if (!running)
+  if (running <= PAUSED)
     return;
 
   clear();
@@ -63,36 +66,47 @@ function run () {
  **/
 
 function togglePlay () {
-  running = !running;
-
-  if (running)
+  if (running == STOPPED) {
+    start();
+  } else if (running == PAUSED) {
+    running = PLAYING;
     run();
+  } else {
+    running = PAUSED;
+  }
 
-  // eat click event
   return false;
 }
 
+function start () {
+  for (var i = 0; i < 20; i++) {
+    new Particle().add();
+  }
+  running = PLAYING
+  run();
+}
+
 function stop () {
-  running = false;
+  running = STOPPED;
   clear();
 
+  particles = [];
   return false;
 }
 
 function restart () {
+  stop();
+  start();
   return false;
 }
 
 $(function () {
   canvas = $("canvas").get()[0];
   ctx = canvas.getContext('2d');
-  width = canvas.width;
-  height = canvas.height;
-
-  for (var i = 0; i < 20; i++) {
-    new Particle().add();
-  }
+  width = canvas.clientWidth;
+  height = canvas.clientHeight;
 
   $("#play-pause").click(togglePlay);
   $("#stop").click(stop);
+  $("#restart").click(restart);
 });

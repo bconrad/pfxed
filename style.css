@@ -11,3 +11,10 @@ canvas {
   float: right;
   color: white;
 }
+
+#ui textarea {
+  margin-bottom: 12px;
+  display: block;
+  height: 10em;
+  width: 300px;
+}
