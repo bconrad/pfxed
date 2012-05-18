@@ -13,18 +13,18 @@
     <a id="restart" href="#" class="control">restart</a>
   </div>
   <form>
-    <textarea id="init-function">
+<textarea spellcheck="false" id="init-function">
 this.x = Math.random() * width;
 this.y = Math.random() * height;
 this.xvel = (Math.random() - .5) * 10;
 this.yvel = (Math.random() - .5) * 10;
-    </textarea>
-    <textarea id="draw-function">
+</textarea>
+<textarea spellcheck="false" id="draw-function">
 ctx.fillRect(this.x, this.y, 4, 4);
-    </textarea>
-    <textarea id="update-function">
+</textarea>
+<textarea spellcheck="false" id="update-function">
 this.yvel -= 1;
-    </textarea>
+</textarea>
   </form>
 </div>
 </body>
