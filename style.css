@@ -3,5 +3,11 @@ body {
 }
 
 canvas {
+  float: left;
   background: white;
+}
+
+#ui {
+  float: right;
+  color: white;
 }

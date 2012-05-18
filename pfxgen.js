@@ -1,3 +1,4 @@
+var running = false;
 var canvas, ctx, width, height;
 var particles = [];
 function Particle () {
@@ -36,8 +37,16 @@ Particle.prototype.updatePhysics = function () {
     this.yvel *= -1;
 }
 
-function render () {
+function clear () {
   ctx.clearRect(0, 0, width, height);
+}
+
+function run () {
+  if (!running)
+    return;
+
+  clear();
+
   for (var p in particles) {
     particles[p].draw();
   }
@@ -46,7 +55,32 @@ function render () {
     particles[p].updatePhysics();
   }
 
-  setTimeout(render, 1000/60);
+  setTimeout(run, 1000/60);
+}
+
+/**
+ * Control Funtions
+ **/
+
+function togglePlay () {
+  running = !running;
+
+  if (running)
+    run();
+
+  // eat click event
+  return false;
+}
+
+function stop () {
+  running = false;
+  clear();
+
+  return false;
+}
+
+function restart () {
+  return false;
 }
 
 $(function () {
@@ -59,5 +93,6 @@ $(function () {
     new Particle().add();
   }
 
-  render();
+  $("#play-pause").click(togglePlay);
+  $("#stop").click(stop);
 });
