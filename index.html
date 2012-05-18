@@ -8,10 +8,10 @@
 <div id="ui">
   <form id="options">
     <label for="maxParticles">Number of Particles:</label>
-    <input id="maxParticles" type="text" value=20>
+    <input id="maxParticles" type="text" value=2000>
     <br/>
     <label for="emitFrequency">Emit X Particles per second:</label>
-    <input id="emitFrequency" type="text" value=10>
+    <input id="emitFrequency" type="text" value=100>
   </form>
   <div id="play-control">
     <a id="play-pause" href="#" class="control">play</a>
@@ -20,16 +20,22 @@
   </div>
   <form>
 <textarea spellcheck="false" id="init-function">
-this.x = Math.random() * width;
-this.y = Math.random() * height;
+this.x = mouseX;
+this.y = mouseY;
 this.xvel = (Math.random() - .5) * 10;
 this.yvel = (Math.random() - .5) * 10;
+this.g = this.b = Math.floor(this.x / width * 255);
+this.r = Math.floor(this.y / height * 255);
+this.birthday = new Date().getTime();
+this.size = Math.floor(Math.random() * 4 + 1);
 </textarea>
 <textarea spellcheck="false" id="draw-function">
-ctx.fillRect(this.x, this.y, 4, 4);
+ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, this.size);
 </textarea>
 <textarea spellcheck="false" id="update-function">
-this.yvel -= 1;
+var now = new Date().getTime();
+if (now - this.birthday > 10000)
+  this.drop();
 </textarea>
   </form>
 </div>

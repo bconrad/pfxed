@@ -48,7 +48,10 @@ Particle.prototype.add = function () {
 }
 
 Particle.prototype.drop = function () {
-  particles.splice(this.index, 1);
+  for (var i in particles) {
+    if (particles[i] == this)
+      particles.splice(i, 1);
+  }
 }
 
 Particle.prototype.draw = function () {
