@@ -10,6 +10,17 @@ var drawFunction
   ;
 var uiFocus = false;
 var particles = [];
+
+var requestAnim =
+  window.requestAnimationFrame       ||
+  window.webkitRequestAnimationFrame ||
+  function (cb) { return setTimeout(cb, 1000/60); };
+
+var clearAnim =
+  window.cancelAnimationFrame       ||
+  window.webkitCancelAnimationFrame ||
+  function (id) { return clearTimeout(id); };
+
 function Particle () {
   this.x = 0;
   this.y = 0;
@@ -65,7 +76,7 @@ function run () {
     particles[p].updatePhysics();
   }
 
-  updateTimeout = setTimeout(run, 1000/60);
+  updateTimeout = requestAnim(run);
 }
 
 /**
@@ -103,7 +114,7 @@ function start () {
 function stop () {
   state = STOPPED;
   clear();
-  clearTimeout(updateTimeout);
+  clearAnim(updateTimeout);
 
   particles = [];
   return false;
