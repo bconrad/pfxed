@@ -9,6 +9,8 @@ canvas {
 #ui {
   float: right;
   color: white;
+  margin: 0;
+  padding: 0;
 }
 
 #ui textarea {

@@ -139,8 +139,10 @@ function keyHandler (ev) {
 }
 
 $(function () {
-  $("body").append("<canvas></canvas>");
+  width = parseInt($("body").css("width")) - parseInt($("#ui").css("width")) - 20;
+  $("body").append("<canvas width=\"" + width + "\" height=\"" + "600" + "\"></canvas>");
   canvas = $("canvas").get()[0];
+
   ctx = canvas.getContext('2d');
   width = canvas.clientWidth;
   height = canvas.clientHeight;
