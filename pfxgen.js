@@ -96,7 +96,7 @@ function start () {
     p.add();
     initFunction.call(p);
   }
-  state = PLAYING
+  state = PLAYING;
 }
 
 function stop () {

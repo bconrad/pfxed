@@ -1,10 +1,9 @@
 body {
-  background: black;
 }
 
 canvas {
   float: left;
-  background: white;
+  background: #888;
 }
 
 #ui {
@@ -17,4 +16,9 @@ canvas {
   display: block;
   height: 10em;
   width: 300px;
+}
+
+#play-control a {
+  color: white;
+  background: #444;
 }
