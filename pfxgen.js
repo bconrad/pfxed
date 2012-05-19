@@ -208,7 +208,7 @@ $(function () {
   var $textAreas = $("#ui textarea").get();
   var $newElement;
   for (var e in $textAreas) {
-    $newElement = $('<button class="function-button">' + $textAreas[e].id  + '</button>')
+    $newElement = $('<button id="' + $textAreas[e].id + '-button" class="function-button">' + $textAreas[e].id  + '</button>')
     $newElement.get()[0].target = $textAreas[e].id;
     $("#functions").append($newElement);
     $newElement.click(function () { $("#" + this.target).toggle(); return false; });
