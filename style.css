@@ -2,15 +2,13 @@ body {
 }
 
 canvas {
-  float: left;
   background: #CCC;
 }
 
 #ui {
-  float: right;
   margin: 0;
   padding: 0;
-  width: 400px;
+  width: 100%;
 }
 
 #ui textarea {

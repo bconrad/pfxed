@@ -187,9 +187,9 @@ function mouseMoveHandler (ev) {
 }
 
 $(function () {
-  width = parseInt($("body").css("width")) - parseInt($("#ui").css("width")) - 20;
+  width = parseInt($("#ui").css("width"));
   width = Math.min(width, 600);
-  $("body").append("<canvas width=\"" + width + "\" height=\"" + "600" + "\"></canvas>");
+  $("body").prepend("<canvas width=\"" + width + "\" height=\"" + "600" + "\"></canvas>");
   canvas = $("canvas").get()[0];
   height = 600;
 
