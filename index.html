@@ -21,8 +21,8 @@
   <div id="functions"></div>
   <form>
 <textarea spellcheck="false" id="init-function">
-this.x = mouseX;
-this.y = mouseY;
+this.x = Math.random() * width;
+this.y = Math.random() * height;
 this.xvel = (Math.random() - .5) * 10;
 this.yvel = (Math.random() - .5) * 10;
 this.g = this.b = Math.floor(this.x / width * 255);
