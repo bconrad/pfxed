@@ -210,9 +210,9 @@ function init(element) {
 
   width = parseInt($("#ui").css("width"));
   width = Math.min(width, 600);
-  element.prepend("<canvas width=\"" + width + "\" height=\"" + "600" + "\"></canvas>");
+  height = width / 1.25;
+  element.prepend("<canvas width=\"" + width + "\" height=\"" + height + "\"></canvas>");
   canvas = $("canvas").get()[0];
-  height = 600;
 
   ctx = canvas.getContext('2d');
 
