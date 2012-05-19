@@ -11,8 +11,8 @@ var drawFunction
   ;
 var uiFocus = false;
 var startingParticles = 0;
-var maxParticles = 20;
-var emitFrequency = 10;
+var maxParticles = 1000;
+var emitFrequency = 100;
 var particles = [];
 var dampening = 1;
 var lastRun = undefined;
@@ -207,6 +207,9 @@ function init(element) {
       .append($('<textarea spellcheck="false" id="update-function">'))
     )
   );
+
+  $("#emitFrequency").val(emitFrequency);
+  $("#maxParticles").val(maxParticles);
 
   width = parseInt($("#ui").css("width"));
   width = Math.min(width, 600);
