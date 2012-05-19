@@ -19,11 +19,27 @@ canvas {
   width: 600px;
 }
 
-#play-control a {
+#ui a {
   color: black;
+  margin: 0 2px 2px 0;
+  display: inline-block;
+  border: 1px solid #888;
+  line-height: 18px;
+  font-size: 14px;
+  font-color: white;
+  background: #CCC;
+  box-shadow: 0px 1px 1px white inset, 2px 2px 0px -1px black;
+  text-shadow: 1px 1px 1px white;
+  text-decoration: none;
+  padding: 0 2px;
 }
 
-.function-button {
-  display: inline-block;
-  margin-right: 12px;
+#ui a:hover {
+  background: #EEE;
+}
+
+#ui a:active {
+  position: relative;
+  top: 1px;
+  box-shadow: 0px 1px 1px white inset, 2px 1px 0px -1px black;
 }
