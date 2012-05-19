@@ -186,10 +186,31 @@ function mouseMoveHandler (ev) {
   mouseY = ev.offsetY - canvas.offsetTop;
 }
 
-$(function () {
+function init(element) {
+  // build UI
+  element.append($("<div id='ui'>")
+    .append($("<form id='options'>")
+      .append($("<label for='maxParticles'>Max Particles</label>"))
+      .append($("<input id='maxParticles' type='text'>"))
+      .append($("<label for='emitFrequency'>Emit Frequency</label>"))
+      .append($("<input id='emitFrequency' type='text'>"))
+    )
+    .append($("<div id='play-control'>")
+      .append($('<button id="play-pause" class="control">play</button>'))
+      .append($('<button id="stop" class="control">stop</button>'))
+      .append($('<button id="restart" class="control">restart</button>'))
+    )
+    .append($("<div id='functions>"))
+    .append($("<form>")
+      .append($('<textarea spellcheck="false" id="init-function">'))
+      .append($('<textarea spellcheck="false" id="draw-function">'))
+      .append($('<textarea spellcheck="false" id="update-function">'))
+    )
+  );
+
   width = parseInt($("#ui").css("width"));
   width = Math.min(width, 600);
-  $("body").prepend("<canvas width=\"" + width + "\" height=\"" + "600" + "\"></canvas>");
+  element.prepend("<canvas width=\"" + width + "\" height=\"" + "600" + "\"></canvas>");
   canvas = $("canvas").get()[0];
   height = 600;
 
@@ -214,4 +235,4 @@ $(function () {
     $newElement.click(function () { $("#" + this.target).toggle(); return false; });
   }
 
-});
+}

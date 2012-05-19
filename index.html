@@ -3,42 +3,10 @@
 <link rel="stylesheet" href="style.css">
 <script src="jQuery.js"></script>
 <script src="pfxgen.js"></script>
+<script type="text/javascript">
+$(function () { init($("body")); });
+</script>
 </head>
 <body>
-<div id="ui">
-  <form id="options">
-    <label for="maxParticles">Number of Particles:</label>
-    <input id="maxParticles" type="text" value=2000>
-    <br/>
-    <label for="emitFrequency">Emit X Particles per second:</label>
-    <input id="emitFrequency" type="text" value=100>
-  </form>
-  <div id="play-control">
-    <button id="play-pause" class="control">play</button>
-    <button id="stop" class="control">stop</button>
-    <button id="restart" class="control">restart</button>
-  </div>
-  <div id="functions"></div>
-  <form>
-<textarea spellcheck="false" id="init-function">
-this.x = Math.random() * width;
-this.y = Math.random() * height;
-this.xvel = (Math.random() - .5) * 10;
-this.yvel = (Math.random() - .5) * 10;
-this.g = this.b = Math.floor(this.x / width * 255);
-this.r = Math.floor(this.y / height * 255);
-this.birthday = new Date().getTime();
-this.size = Math.floor(Math.random() * 4 + 1);
-</textarea>
-<textarea spellcheck="false" id="draw-function">
-ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, this.size);
-</textarea>
-<textarea spellcheck="false" id="update-function">
-var now = new Date().getTime();
-if (now - this.birthday > 10000)
-  this.drop();
-</textarea>
-  </form>
-</div>
 </body>
 </html>
