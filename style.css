@@ -18,7 +18,7 @@ canvas {
   width: 100%;
 }
 
-#ui a {
+#ui button {
   color: black;
   margin: 0 2px 2px 0;
   display: inline-block;
@@ -31,13 +31,14 @@ canvas {
   text-shadow: 1px 1px 1px white;
   text-decoration: none;
   padding: 0 2px;
+  cursor: pointer;
 }
 
-#ui a:hover {
+#ui button:hover {
   background: #EEE;
 }
 
-#ui a:active {
+#ui button:active {
   position: relative;
   top: 1px;
   box-shadow: 0px 1px 1px white inset, 2px 1px 0px -1px black;
