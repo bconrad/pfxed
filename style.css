@@ -22,3 +22,8 @@ canvas {
 #play-control a {
   color: black;
 }
+
+.function-button {
+  display: inline-block;
+  margin-right: 12px;
+}

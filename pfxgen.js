@@ -204,4 +204,14 @@ $(function () {
   $("#ui").focusout(function () { uiFocus = false; });
   $("#options").submit(function () { restart(); return false; });
 
+  // add buttons for textarea toggling
+  var $textAreas = $("#ui textarea").get();
+  var $newElement;
+  for (var e in $textAreas) {
+    $newElement = $('<a class="function-button" href="#">' + $textAreas[e].id  + '</a>')
+    $newElement.get()[0].target = $textAreas[e].id;
+    $("#functions").append($newElement);
+    $newElement.click(function () { $("#" + this.target).toggle(); return false; });
+  }
+
 });
