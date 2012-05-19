@@ -10,13 +10,14 @@ canvas {
   float: right;
   margin: 0;
   padding: 0;
+  width: 400px;
 }
 
 #ui textarea {
   margin-bottom: 12px;
   display: block;
   height: 10em;
-  width: 600px;
+  width: 100%;
 }
 
 #ui a {
