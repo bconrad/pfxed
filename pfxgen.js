@@ -200,7 +200,7 @@ function init(element) {
       .append($('<button id="stop" class="control">stop</button>'))
       .append($('<button id="restart" class="control">restart</button>'))
     )
-    .append($("<div id='functions>"))
+    .append($("<div id='functions'>"))
     .append($("<form>")
       .append($('<textarea spellcheck="false" id="init-function">'))
       .append($('<textarea spellcheck="false" id="draw-function">'))
